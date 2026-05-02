@@ -1,0 +1,16 @@
+sequenceDiagram
+    participant browser
+    participant server
+
+    Note right of browser: El usuario escribe su nueva nota y hace clic en el botón "Save"
+    Note right of browser: El código JavaScript intercepta el evento de envío del formulario
+    Note right of browser: El navegador actualiza la interfaz (DOM) añadiendo la nota a la lista en pantalla
+
+    browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa
+    activate server
+    Note right of browser: Los datos se envían en segundo plano en formato JSON: { "content": "nueva nota", "date": "..." }
+    Note left of server: El servidor procesa el JSON y guarda la nota en su registro
+    server-->>browser: 201 Created ({"message": "note created"})
+    deactivate server
+
+    Note right of browser: El navegador recibe la confirmación de éxito. La página no se recarga en ningún momento.
