@@ -28,12 +28,16 @@ const App = () => {
   return (
     <div>
       {anecdotes[selected]}
-      {" has " + votes[selected] + " votes."}
+      <p>{" has " + votes[selected] + " votes."}</p>
       <Button handleClick={handleVote} text="Vote" />
       <Button
         handleClick={() => setSelected((selected + 1) % anecdotes.length)}
         text="Next Anecdote"
       />
+
+      <h1>Anecdote with most votes:</h1>
+      {anecdotes[votes.indexOf(Math.max(...votes))]}
+      <p>{" has " + Math.max(...votes) + " votes."}</p>
     </div>
   );
 };
