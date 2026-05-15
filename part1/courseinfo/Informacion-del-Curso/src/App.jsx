@@ -27,8 +27,8 @@ const Content = ({ parts }) => {
 const Total = (props) => {
   return (
     <p>
-      Numero de ejercicios totales:{" "}
-      {props.parts.reduce((sum, part) => sum + part.exercises, 0)}
+      Total of {props.parts.reduce((sum, part) => sum + part.exercises, 0)}{" "}
+      excercises
     </p>
   );
 };
